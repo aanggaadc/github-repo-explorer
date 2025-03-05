@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchRepositories } from "@/services";
+
 import { ChevronDown, ChevronUp, User as UserIcon } from "lucide-react";
 
 import { RepositoryList } from "./repository-list";
@@ -18,6 +21,14 @@ export const UserItem: React.FC<UserItemProps> = ({
 }) => {
   const [expanded, setExpanded] = useState(isExpanded);
 
+  const { data } = useQuery({
+    queryKey: ["repositories", user.login],
+    queryFn: () => fetchRepositories(user.repos_url),
+    enabled: !!user,
+  });
+
+  const repositories = data ?? [];
+
   const handleToggle = () => {
     const newExpandedState = !expanded;
     setExpanded(newExpandedState);
@@ -32,7 +43,7 @@ export const UserItem: React.FC<UserItemProps> = ({
       >
         <div className="flex items-center">
           <UserIcon className="mr-2 h-5 w-5 text-gray-500" />
-          <span>{user.username}</span>
+          <span>{user.login}</span>
         </div>
         <button className="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors">
           {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -41,7 +52,7 @@ export const UserItem: React.FC<UserItemProps> = ({
 
       {expanded && (
         <div className="pl-2 pr-2 pt-2 animate-slide-down">
-          <RepositoryList repositories={user.repositories} />
+          <RepositoryList repositories={repositories} />
         </div>
       )}
     </div>
