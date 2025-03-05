@@ -18,7 +18,7 @@ export const RepositoryList: React.FC<RepositoryListProps> = ({
   }
 
   return (
-    <div className="mt-2 space-y-2 animate-slide-down">
+    <div className="mt-2 space-y-2">
       {repositories.map((repo) => (
         <RepositoryItem key={repo.id} repository={repo} />
       ))}

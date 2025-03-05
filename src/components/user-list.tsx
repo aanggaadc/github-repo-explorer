@@ -23,7 +23,7 @@ export const UserList: React.FC<UserListProps> = ({ users, searchQuery }) => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="text-sm text-muted-foreground mb-4 animate-fade-in">
+      <div className="text-sm text-muted-foreground my-4 animate-fade-in">
         Showing users for "{searchQuery}"
       </div>
       <div className="space-y-2 overflow-y-auto flex-1 min-h-0">

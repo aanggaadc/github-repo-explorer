@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRepositories } from "@/services";
-
 import { ChevronDown, ChevronUp, User as UserIcon } from "lucide-react";
 
 import { RepositoryList } from "./repository-list";
-
 import { IUser } from "@/types";
 
 interface UserItemProps {
@@ -20,6 +18,7 @@ export const UserItem: React.FC<UserItemProps> = ({
   onToggle,
 }) => {
   const [expanded, setExpanded] = useState(isExpanded);
+  const [isClosing, setIsClosing] = useState(false);
 
   const { data } = useQuery({
     queryKey: ["repositories", user.login],
@@ -30,8 +29,16 @@ export const UserItem: React.FC<UserItemProps> = ({
   const repositories = data ?? [];
 
   const handleToggle = () => {
-    const newExpandedState = !expanded;
-    setExpanded(newExpandedState);
+    if (expanded) {
+      setIsClosing(true);
+      setTimeout(() => {
+        setExpanded(false);
+        setIsClosing(false);
+      }, 400);
+    } else {
+      setExpanded(true);
+    }
+
     if (onToggle) onToggle();
   };
 
@@ -50,8 +57,12 @@ export const UserItem: React.FC<UserItemProps> = ({
         </button>
       </div>
 
-      {expanded && (
-        <div className="pl-2 pr-2 pt-2 animate-slide-down">
+      {(expanded || isClosing) && (
+        <div
+          className={`pl-2 pr-2 pt-2 ${
+            isClosing ? "animate-slide-up" : "animate-slide-down"
+          }`}
+        >
           <RepositoryList repositories={repositories} />
         </div>
       )}
