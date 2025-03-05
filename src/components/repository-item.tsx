@@ -20,7 +20,9 @@ export const RepositoryItem: React.FC<RepositoryItemProps> = ({
           </p>
         </div>
         <div className="flex items-center text-yellow-500">
-          <span className="font-medium mr-1">{repository.stars}</span>
+          <span className="font-medium mr-1">
+            {repository.stargazers_count}
+          </span>
           <Star size={16} className="fill-yellow-500 text-yellow-500" />
         </div>
       </div>
