@@ -75,7 +75,7 @@ export interface IRepository {
   ssh_url: string;
   clone_url: string;
   svn_url: string;
-  homepage: any;
+  homepage: string;
   size: number;
   stargazers_count: number;
   watchers_count: number;
@@ -87,15 +87,15 @@ export interface IRepository {
   has_pages: boolean;
   has_discussions: boolean;
   forks_count: number;
-  mirror_url: any;
+  mirror_url: string;
   archived: boolean;
   disabled: boolean;
   open_issues_count: number;
-  license: any;
+  license: string;
   allow_forking: boolean;
   is_template: boolean;
   web_commit_signoff_required: boolean;
-  topics: any[];
+  topics: string[];
   visibility: string;
   forks: number;
   open_issues: number;
