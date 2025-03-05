@@ -7,7 +7,7 @@ interface SearchBoxProps {
   placeholder?: string;
 }
 
-const SearchBox: React.FC<SearchBoxProps> = ({
+export const SearchBox: React.FC<SearchBoxProps> = ({
   onSearch,
   placeholder = "Enter username",
 }) => {
@@ -41,5 +41,3 @@ const SearchBox: React.FC<SearchBoxProps> = ({
     </form>
   );
 };
-
-export default SearchBox;

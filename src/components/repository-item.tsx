@@ -7,7 +7,9 @@ interface RepositoryItemProps {
   repository: IRepository;
 }
 
-const RepositoryItem: React.FC<RepositoryItemProps> = ({ repository }) => {
+export const RepositoryItem: React.FC<RepositoryItemProps> = ({
+  repository,
+}) => {
   return (
     <div className="repository-item bg-secondary rounded-md p-4 mb-3 animate-fade-in">
       <div className="flex justify-between items-start">
@@ -25,5 +27,3 @@ const RepositoryItem: React.FC<RepositoryItemProps> = ({ repository }) => {
     </div>
   );
 };
-
-export default RepositoryItem;

@@ -1,4 +1,4 @@
-import RepositoryItem from "./repository-item";
+import { RepositoryItem } from "./repository-item";
 
 import { IRepository } from "@/types";
 
@@ -6,7 +6,9 @@ interface RepositoryListProps {
   repositories: IRepository[];
 }
 
-const RepositoryList: React.FC<RepositoryListProps> = ({ repositories }) => {
+export const RepositoryList: React.FC<RepositoryListProps> = ({
+  repositories,
+}) => {
   if (repositories.length === 0) {
     return (
       <div className="text-center py-4 text-muted-foreground">
@@ -23,5 +25,3 @@ const RepositoryList: React.FC<RepositoryListProps> = ({ repositories }) => {
     </div>
   );
 };
-
-export default RepositoryList;

@@ -1,5 +1,5 @@
 import React from "react";
-import UserItem from "./user-item";
+import { UserItem } from "./user-item";
 
 import { IUser } from "@/types";
 
@@ -8,7 +8,7 @@ interface UserListProps {
   searchQuery: string;
 }
 
-const UserList: React.FC<UserListProps> = ({ users, searchQuery }) => {
+export const UserList: React.FC<UserListProps> = ({ users, searchQuery }) => {
   if (users.length === 0 && searchQuery) {
     return (
       <div className="text-center py-6 text-muted-foreground animate-fade-in">
@@ -34,5 +34,3 @@ const UserList: React.FC<UserListProps> = ({ users, searchQuery }) => {
     </div>
   );
 };
-
-export default UserList;

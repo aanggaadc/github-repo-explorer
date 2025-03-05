@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, User as UserIcon } from "lucide-react";
-import RepositoryList from "./repository-list";
+
+import { RepositoryList } from "./repository-list";
 
 import { IUser } from "@/types";
 
@@ -10,7 +11,7 @@ interface UserItemProps {
   onToggle?: () => void;
 }
 
-const UserItem: React.FC<UserItemProps> = ({
+export const UserItem: React.FC<UserItemProps> = ({
   user,
   isExpanded = false,
   onToggle,
@@ -46,5 +47,3 @@ const UserItem: React.FC<UserItemProps> = ({
     </div>
   );
 };
-
-export default UserItem;
