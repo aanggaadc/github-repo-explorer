@@ -4,10 +4,12 @@ import { Button, Input } from "@/components/ui";
 interface SearchBoxProps {
   onSearch: (query: string) => void;
   placeholder?: string;
+  isFetching: boolean;
 }
 
 export const SearchBox: React.FC<SearchBoxProps> = ({
   onSearch,
+  isFetching,
   placeholder = "Enter username",
 }) => {
   const [query, setQuery] = useState("");
@@ -30,6 +32,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
           className="w-full border border-gray-200 rounded-md py-5 px-4 focus-visible:ring-offset-0 focus-visible:ring-1"
         />
         <Button
+          disabled={isFetching}
           type="submit"
           className="w-full bg-primary hover:bg-primary/90 transition-all duration-300 py-6 text-white rounded-md cursor-pointer"
         >
