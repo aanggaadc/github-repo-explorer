@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Input } from "@/components/ui";
-import { Search } from "lucide-react";
 
 interface SearchBoxProps {
   onSearch: (query: string) => void;
@@ -32,9 +31,8 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
         />
         <Button
           type="submit"
-          className="w-full bg-primary hover:bg-primary/90 transition-all duration-300 py-6 text-white rounded-md"
+          className="w-full bg-primary hover:bg-primary/90 transition-all duration-300 py-6 text-white rounded-md cursor-pointer"
         >
-          <Search className="mr-2 h-4 w-4" />
           Search
         </Button>
       </div>
