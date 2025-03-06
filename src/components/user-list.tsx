@@ -26,7 +26,7 @@ export const UserList: React.FC<UserListProps> = ({ users, searchQuery }) => {
       <div className="text-sm text-muted-foreground my-4 animate-fade-in">
         Showing users for "{searchQuery}"
       </div>
-      <div className="space-y-2 overflow-y-auto flex-1 min-h-0">
+      <div className="flex flex-col space-y-2 overflow-y-auto flex-1 min-h-0 h-full">
         {users.map((user) => (
           <UserItem key={user.id} user={user} />
         ))}

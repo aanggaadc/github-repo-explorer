@@ -64,6 +64,7 @@ export const UserItem: React.FC<UserItemProps> = ({
           className={`pl-2 pr-2 pt-2 ${
             isClosing ? "animate-slide-up" : "animate-slide-down"
           }`}
+          style={{ maxHeight: "400px", overflowY: "auto" }}
         >
           {isLoading ? (
             <LoadingCircle />

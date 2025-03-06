@@ -41,7 +41,7 @@ const App = () => {
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-white rounded-lg shadow-sm p-6 h-[500px] flex flex-col w-full max-w-md">
+        <div className="bg-white rounded-lg shadow-sm p-6 h-[600px] flex flex-col w-full max-w-md">
           <SearchBox onSearch={handleSearch} isFetching={isLoading} />
 
           <div className="flex-1 min-h-0">
