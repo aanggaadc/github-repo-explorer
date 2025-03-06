@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchRepositories } from "@/services";
 import { ChevronDown, ChevronUp, User as UserIcon } from "lucide-react";
 
+import { LoadingCircle } from "./loading-circle";
+
 import { RepositoryList } from "./repository-list";
 import { IUser } from "@/types";
 
@@ -20,10 +22,10 @@ export const UserItem: React.FC<UserItemProps> = ({
   const [expanded, setExpanded] = useState(isExpanded);
   const [isClosing, setIsClosing] = useState(false);
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["repositories", user.login],
     queryFn: () => fetchRepositories(user.repos_url),
-    enabled: !!user,
+    enabled: expanded,
   });
 
   const repositories = data ?? [];
@@ -63,7 +65,11 @@ export const UserItem: React.FC<UserItemProps> = ({
             isClosing ? "animate-slide-up" : "animate-slide-down"
           }`}
         >
-          <RepositoryList repositories={repositories} />
+          {isLoading ? (
+            <LoadingCircle />
+          ) : (
+            <RepositoryList repositories={repositories} />
+          )}
         </div>
       )}
     </div>
