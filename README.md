@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# GitHub Repositories Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Description
+GitHub Repositories Explorer is a React application that integrates with the GitHub API to allow users to search users with a username similar to the inputted value. Upon selecting a user, the application displays all repositories associated with that user.
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
+- **Frontend:** React, TypeScript
+- **Styling:** Tailwind CSS, ShadCN
+- **State Management & Data Fetching:** TanStack React Query
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Features
+- Search for GitHub users based on input.
+- Show repositories for a selected user.
+- Proper error handling for API requests.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📂 Project Structure
+```
+/src
+ ├── components/      # Reusable components
+ ├── services/        # API call functions
+ ├── lib/             # Helper functions
+ ├── providers/       # Context providers
+ ├── types/           # TypeScript type definitions
+ ├── App.tsx          # Main app component
+ ├── main.tsx         # React entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔧 Installation & Setup
+### Prerequisites
+Make sure you have the following installed on your machine:
+- Node.js (v18+ recommended)
+- npm or yarn
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Steps to Run Locally
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/aanggaadc/github-repo-explorer.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd github-repo-explorer
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   or
+   ```bash
+   yarn dev
+   ```
+5. Open your browser and go to `http://localhost:5173/` (or the provided port).
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🛠️ API Integration
+This project uses the [GitHub REST API v3](https://developer.github.com/v3/) to fetch user data and repositories.
+
+### Endpoints Used
+- **Search Users:** `GET https://api.github.com/search/users?q={username}`
+- **Get User Repositories:** `GET https://api.github.com/users/{username}/repos`
+
+## ✅ Error Handling
+- Displays appropriate error messages if the API request fails.
+- Handles cases where no users or repositories are found.
+- Implements loading states for better UX.
+
+---
+
+Happy Coding! 🚀
+
